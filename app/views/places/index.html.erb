@@ -1,1 +1,14 @@
-<h1>Welcome to TravelThots!</h1>
+<% @places.each do |place| %>
+
+<div>
+	<% if place.state.present? %>
+		<h1><%= place.city %>, <%= place.state %>, <%= place.country %></h1>
+	<% else %>
+		<h1><%= place.city %>, <%= place.country %></h1>
+	<% end %>	
+	<h2><%= place.rating %></h2>
+	<p><%= place.tips %></p>
+</div>
+
+<hr />
+<% end %>
