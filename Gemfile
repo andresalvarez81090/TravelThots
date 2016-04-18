@@ -28,6 +28,11 @@ gem 'rails_12factor', group: :production
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'sprockets', '2.11.0'
 gem 'sass-rails'
+gem 'simple_form'
+
+gem 'will_paginate', '~> 3.0.5'
+gem 'betterlorem', '~> 0.1.2'
+gem 'bootstrap-will_paginate', '~> 0.0.10P'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,0 +1,13 @@
+<div class = "formbox col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+	<h1>Enter a new place!</h1>
+	<%= simple_form_for @place do |f| %>
+		<%= f.input :city %>
+		<%= f.input :state %>
+		<%= f.input :country %>
+		<%= f.input :rating %>
+		<%= f.input :tips %>
+		<br />
+		<%= f.submit 'Post', class: 'btn btn-primary' %>
+		
+	<% end %>
+</div>

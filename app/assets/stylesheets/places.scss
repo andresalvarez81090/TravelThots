@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.places {
+.formbox {
+	background: #7278DD;
+	color: white;
+}
+
+.formbox h1 {
 	text-align: center;
+	font-family: 'Lobster', cursive;
+}
+
+.formbox input.btn.btn-primary {
+	background: purple;
 }

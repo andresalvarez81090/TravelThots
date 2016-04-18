@@ -3,11 +3,14 @@
 	border: 1px solid white;
 	margin-bottom: 5%;
 	padding: 5%;
+	text-align: center;
 }
 .places h1 {
 	font-size: 300%;
 }
-
+.clear {
+	clear: both;
+}
 body {
 	background: #7278DD;
 	font-family: 'Asap', sans-serif;
@@ -26,3 +29,24 @@ body {
 .navbar-toggle span.icon-bar {
 	background-color: white;
 }
+
+.pagination {
+	display: block;
+}
+
+ul.pagination li a {
+	background: white;
+	border: 1px solid white;
+	color: #7278DD;
+}
+ul.pagination li.disabled a {
+	background: white;
+	border: 1px solid white;
+	color: #7278DD;
+}
+ul.pagination li.active a {
+	background: #7278DD;
+	color: white;
+	border: #7278DD;
+}
+
