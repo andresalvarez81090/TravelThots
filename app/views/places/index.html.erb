@@ -1,6 +1,9 @@
 <% @places.each do |place| %>
 
 <div class = "places col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+	<% if place.user.present? %>
+		<small><%= place.user.username %></small>
+	<% end %>
 	<% if place.state.present? %>
 		<h1><%= place.city.upcase %>, <%= place.state.upcase %>, <%= place.country.upcase %></h1>
 	<% else %>
@@ -9,9 +12,6 @@
 	<h2>Rating: <%= place.rating %></h2>
 	<p>TravelThots: <%= place.tips %></p>
 
-	<% if place.user.present? %>
-		<small><%= place.user.username %></small>
-	<% end %>
 </div>
 <% end %>
 
