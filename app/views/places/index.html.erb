@@ -8,6 +8,10 @@
 	<% end %>	
 	<h2>Rating: <%= place.rating %></h2>
 	<p>TravelThots: <%= place.tips %></p>
+
+	<% if place.user.present? %>
+		<small><%= place.user.username %></small>
+	<% end %>
 </div>
 <% end %>
 
