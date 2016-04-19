@@ -49,4 +49,18 @@ ul.pagination li.active a {
 	color: white;
 	border: #7278DD;
 }
+.formbox a{
+	background: #7278DD;
+	color: white;
+	text-decoration: none;
+}
 
+.formbox a h1{
+	text-align: center;
+	font-family: 'Lobster', cursive;
+
+}
+
+.formbox input.btn.btn-primary {
+	background: purple;
+}
