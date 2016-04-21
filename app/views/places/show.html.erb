@@ -1,0 +1,13 @@
+<div class = "placebox col-xs-12 col-sm-6 col-sm-offset-3">
+	<h1><%= @place.city %></h1>
+	<% if @place.state.present? %>
+		<h2><%= @place.state %>, <%= @place.country %></h2>
+	<% else %>
+		<h2><%= @place.country %></h2>
+	<% end %>
+	<br />
+	<h3>Rating: <%= @place.rating %></h3>
+	<br />
+	<h3>TravelThots: </h3>
+	<h4><%= @place.tips %></h4>
+</div>
