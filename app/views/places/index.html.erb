@@ -7,7 +7,7 @@
 	<% if place.state.present? %>
 		<h1><%= link_to place.city.upcase, place_path(place) %>, <%= place.state.upcase %>, <%= place.country.upcase %></h1>
 	<% else %>
-		<h1><%= place.city.upcase %>, <%= place.country.upcase %></h1>
+		<h1><%= link_to place.city.upcase, place_path(place) %>, <%= place.country.upcase %></h1>
 	<% end %>	
 	<h2>Rating: <%= place.rating %></h2>
 	<p>TravelThots: <%= place.tips %></p>
