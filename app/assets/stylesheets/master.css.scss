@@ -68,3 +68,10 @@ ul.pagination li.active a {
 .formbox input.btn.btn-primary {
 	background: purple;
 }
+
+.field_with_errors {
+	color: #EBEBEB;
+	background-color: #F45B69;
+	border-radius: 3px;
+	padding: 8px;
+}
