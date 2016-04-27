@@ -1,6 +1,6 @@
 <% @places.each do |place| %>
 	<% map_id = 'map' + place.id.to_s %>
-	<div class = "places col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3"> 
+	<div class = "places col-xs-12 col-sm-6 col-sm-offset-3"> 
 		<% if place.user.present? %>
 			<small><%= place.user.username %></small>
 		<% end %>
