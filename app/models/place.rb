@@ -1,6 +1,10 @@
 class Place < ActiveRecord::Base
 	belongs_to :user
 	has_many :comments
+	
+
+	acts_as_likeable
+
 	geocoded_by :full_place
 	after_validation :geocode 
 

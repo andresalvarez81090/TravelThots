@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    post 'follow', to: 'socializations#follow'
+    post 'unfollow', to: 'socializations#unfollow'
+  end
   root 'places#index'
-
+  get 'place/:id/likes', to: 'places#likes', as: :likes
   resources :places do
     resources :comments, only: :create
   end

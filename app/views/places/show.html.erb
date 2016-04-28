@@ -1,63 +1,78 @@
-<div class = "placebox col-xs-12 col-sm-6 col-sm-offset-3">
-	<h1><%= @place.city %></h1>
-	<% if @place.state.present? %>
-		<h2><%= @place.state %>, <%= @place.country %></h2>
-	<% else %>
-		<h2><%= @place.country %></h2>
-	<% end %>
-	<br />
-	
-	<% if @place.latitude.present? && @place.longitude.present? %>
-  
-    <script>
-
-function initMap() {
-  var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: myLatLng
-  });
-
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
-}
-
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
-        <div id = "map" class = "maps"></div>
-        <% end %>
-        <br />
-	<h3>Rating: <%= @place.rating %></h3>
-	<br />
-	<h3>TravelThots: </h3>
-	<h4><%= @place.tips %></h4>
-	<br />
-	
-	<% if current_user && current_user == @place.user %>
-		<%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
-		<%= link_to 'Delete', place_path(@place), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, class: 'btn btn-danger' %>
-	<% end %>
-	<div class = "icons">
-		<% if current_user %>
-			<%= link_to image_tag('heart.png'), root_path %>
-			<%= link_to image_tag('comment.png'), "#myModal", :data => { :toggle => "modal"} %>
+<div class = "col-xs-12 col-sm-10 col-sm-offset-1">
+	<div class = "placebox col-xs-12 col-sm-8">
+		<h1><%= @place.city %></h1>
+		<% if @place.state.present? %>
+			<h2><%= @place.state %>, <%= @place.country %></h2>
+		<% else %>
+			<h2><%= @place.country %></h2>
 		<% end %>
-	</div>
-	<div class = "comments col-xs-12 col-sm-6 col-sm-offset-3">
-		<h3>Comments</h3>
-		<% @place.comments.each do |comment| %>
-			<div class = "commentsline">
-				<h4 style = "display: inline"><%= comment.user.username %>:</h4>
-				<p style = 'display: inline'><%= comment.comment %></p>
-			</div>
+		
+		<% if @place.latitude.present? && @place.longitude.present? %>
+	  
+	    <script>
+
+	function initMap() {
+	  var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    zoom: 4,
+	    center: myLatLng
+	  });
+
+	  var marker = new google.maps.Marker({
+	    position: myLatLng,
+	    map: map,
+	    title: 'Hello World!'
+	  });
+	}
+
+	    </script>
+	    <script async defer
+	        src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+	        <div id = "map" class = "maps"></div>
+	        <% end %>
+		<h3>Rating: <%= @place.rating %></h3>
+		<h3>TravelThots: </h3>
+		<h4><%= @place.tips %></h4>
+		<br />
+		
+		<% if current_user && current_user == @place.user %>
+			<%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
+			<%= link_to 'Delete', place_path(@place), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, class: 'btn btn-danger' %>
 		<% end %>
+		<br />
+		<div class = "icons">
+			<% if current_user.likes?(@place) %>
+				<%= image_tag('blueheart.png', id: 'heart') %>
+				<%= link_to image_tag('comment.png'), "#myModal", :data => { :toggle => "modal"} %>
+			<% else %>
+				<%= link_to image_tag('heart.png', id: 'heart'), likes_path(@place) %>
+				<%= link_to image_tag('comment.png'), "#myModal", :data => { :toggle => "modal"} %>
+			<% end %>
+			
+		</div>
+		<p>Number of likes <%= @place.likers(User).count %></p>
+		
+		<script>
+		$("#heart").click(function(){
+			$("#heart").attr("src", "<%= image_path 'blueheart.png' %>");
+		})
+			
+		</script>
+
 	</div>
-</div>
+	<div class = "comments col-xs-12 col-sm-4">
+			<h3>Comments</h3>
+			<% @place.comments.each do |comment| %>
+				<div class = "commentsline">
+					<h4 style = "display: inline"><%= comment.user.username %>:</h4>
+					<small style + 'display: inline' class = "pull-right"><%= comment.created_at.strftime("%b%d'%y") %></small>
+					<p style = 'display: inline'><%= comment.comment %></p>
+					
+				</div>
+			<% end %>
+		</div>
+	</div>
 
 
 <!-- Modal -->

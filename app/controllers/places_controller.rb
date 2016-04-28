@@ -1,11 +1,24 @@
 class PlacesController < ApplicationController
-	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :likes]
 	def index
 		@places = Place.paginate(:page => params[:page], :per_page => 3).order('created_at DESC')
 	end
 
 	def new
 		@place = Place.new
+	end
+
+	def likes
+		@user = current_user
+		@place = Place.find(params[:id])
+		@user.like!(@place)
+		redirect_to :back
+	end
+
+	def unlikes
+		@user = current_user
+		@place = Place.find(params[:id])
+		@user.unlike!(@place)
 	end
 
 	def create

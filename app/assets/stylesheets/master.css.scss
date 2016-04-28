@@ -77,13 +77,19 @@ ul.pagination li.active a {
 }
 .maps {
 	height: 300px;
-	width: 300px;
+	width: 100%;
 	margin: 0 auto;
 }
 .icons img {
 	height: 25px;
 	width: 25px;
 }
+.comments {
+	margin-top: 5%;
+	text-align: center;
+}
 .commentsline {
 	text-align: left;
+	margin-bottom: 5%;
+	padding: 2%;
 }
