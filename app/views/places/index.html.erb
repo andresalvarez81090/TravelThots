@@ -17,8 +17,35 @@
 			</div>	       
 	    <% end %>
 	    <div class = "clear"></div>
-		<h2>Rating: <%= place.rating %></h2>
-		<p>TravelThots: <%= place.tips %></p>
+	    <div class = "icons">
+			<%= place.likers(User).count %> likes
+			<% if current_user && current_user.likes?(place) %>
+				<%= image_tag('blueheart.png', id: 'heart') %>
+				<%= link_to image_tag('comment.png'), "#myModal", :data => { :toggle => "modal"} %>
+			<% else %>
+				<%= link_to image_tag('heart.png', id: 'heart'), likes_path(place) %>
+				<%= link_to image_tag('comment.png'), "#myModal", :data => { :toggle => "modal"} %>
+			<% end %>
+			
+		</div>
+
+		<script>
+		$("#heart").click(function(){
+			$("#heart").attr("src", "<%= image_path 'blueheart.png' %>");
+		})
+			
+		</script>
+		<div class = "comments">
+		<h3>Comments</h3>
+		<% place.comments.each do |comment| %>
+			<div class = "commentsline">
+				<h4 style = "display: inline"><%= comment.user.username %>:</h4>
+				<small style + 'display: inline' class = "pull-right"><%= comment.created_at.strftime("%b%d'%y") %></small>
+				<p style = 'display: inline'><%= comment.comment %></p>
+					
+			</div>
+		<% end %>
+	</div>
 
 	</div>
 
