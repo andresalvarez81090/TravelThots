@@ -3,6 +3,8 @@ class Place < ActiveRecord::Base
 	has_many :comments
 	has_many :photos
 
+
+
 	acts_as_likeable
 
 	geocoded_by :full_place

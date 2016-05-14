@@ -32,7 +32,7 @@
 	        <div id = "map" class = "maps"></div>
 	     <% end %>
 	        <div class = "icons">
-	        	Rating:
+	        	<%= @place.user.username %>'s Rating:
 		        <% if @place.rating == 1 %>
 		        	<%= image_tag('airplane.png') %>
 		        <% elsif @place.rating == 2 %>
@@ -56,13 +56,14 @@
 		        <% end %>
 		    </div>
 		
-		<h3>TravelThots: </h3>
+		<h3><%= @place.user.username %>'s TravelThots: </h3>
 		<h4><%= @place.tips %></h4>
 		<br />
 		
 		<% if current_user && current_user == @place.user %>
 			<%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
 			<%= link_to 'Delete', place_path(@place), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, class: 'btn btn-danger' %>
+			<%= link_to 'Add Photo', "#photoModal", :data => { :toggle => "modal"}, class: 'btn btn-primary' %>
 		<% end %>
 		<br />
 		<div class = "icons">
@@ -96,6 +97,14 @@
 					
 			</div>
 		<% end %>
+		<h3><%= @place.user.username %>'s Photos of <%= @place.city %></h3>
+		<% @place.photos.each do |photo| %>
+			<div class = "placephotos">
+				<%= image_tag photo.picture %>
+				<%= photo.caption %></p>
+					
+			</div>
+		<% end %>
 	</div>
 </div>
 
@@ -116,6 +125,30 @@
            <div class="modal-footer">
         		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         		<%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+      		</div>
+      		<% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Photo</h4>
+      </div>
+      
+        <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+	  		<div class = "modal-body">
+	  			<%= f.input :picture %>
+		  		<%= f.input :caption %>
+		  	</div>	
+           <div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		<%= f.submit "Add a Photo", class: 'btn btn-primary' %>
       		</div>
       		<% end %>
       </div>
