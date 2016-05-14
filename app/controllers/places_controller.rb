@@ -2,6 +2,7 @@ class PlacesController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :likes]
 	def index
 		@places = Place.paginate(:page => params[:page], :per_page => 3).order('created_at DESC')
+		@comment = Comment.new(params[:place_id]) #allows for comment creation in index
 	end
 
 	def new

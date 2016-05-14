@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :places
   has_many :comments
   has_many :likes
+  has_many :photos
 
   acts_as_followable
   acts_as_follower

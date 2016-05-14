@@ -21,10 +21,10 @@
 			<%= place.likers(User).count %> likes
 			<% if current_user && current_user.likes?(place) %>
 				<%= image_tag('blueheart.png', id: 'heart') %>
-				<%= link_to image_tag('comment.png'), "#myModal", :data => { :toggle => "modal"} %>
+				<%= link_to image_tag('comment.png'), "#" + place.id.to_s + "Modal", :data => { :toggle => "modal"} %>
 			<% else %>
 				<%= link_to image_tag('heart.png', id: 'heart'), likes_path(place) %>
-				<%= link_to image_tag('comment.png'), "#myModal", :data => { :toggle => "modal"} %>
+				<%= link_to image_tag('comment.png'), "#" + place.id.to_s + "Modal", :data => { :toggle => "modal"} %>
 			<% end %>
 			
 		</div>
@@ -49,8 +49,32 @@
 
 	</div>
 
+<!-- Modal -->
+<div class="modal fade" id= "<%= place.id %>Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Comment</h4>
+      </div>
+      
+        <%= simple_form_for @comment, url: place_comments_path(place) do |f| %>
+	  		<div class = "modal-body">
+		  		<%= f.input :comment %>
+		  	</div>	
+           <div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		<%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+      		</div>
+      		<% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% end %>
+
+
 
 <div class = "clear"></div>
 <%= will_paginate @places %>
