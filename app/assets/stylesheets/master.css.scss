@@ -96,6 +96,11 @@ ul.pagination li.active a {
 	margin-bottom: 1%;
 	padding: 1%;
 }
+
 .placephotos img{
 	width: 100%;
+	display: inline-block;
+}
+.placephotos small {
+	display: block;
 }

@@ -63,7 +63,7 @@
 		<% if current_user && current_user == @place.user %>
 			<%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
 			<%= link_to 'Delete', place_path(@place), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, class: 'btn btn-danger' %>
-			<%= link_to 'Add Photo', "#photoModal", :data => { :toggle => "modal"}, class: 'btn btn-primary' %>
+			<%= link_to 'Add Photo', "#addPhotoModal", :data => { :toggle => "modal"}, class: 'btn btn-primary' %>
 		<% end %>
 		<br />
 		<div class = "icons">
@@ -92,22 +92,42 @@
 		<% @place.comments.each do |comment| %>
 			<div class = "commentsline">
 				<h4 style = "display: inline"><%= comment.user.username %>:</h4>
-				<small style + 'display: inline' class = "pull-right"><%= comment.created_at.strftime("%b%d'%y") %></small>
+				<small style = 'display: inline' class = "pull-right"><%= comment.created_at.strftime("%b%d'%y") %></small>
 				<p style = 'display: inline'><%= comment.comment %></p>
 					
 			</div>
 		<% end %>
 		<h3><%= @place.user.username %>'s Photos of <%= @place.city %></h3>
 		<% @place.photos.each do |photo| %>
-			<div class = "placephotos">
-				<%= image_tag photo.picture %>
-				<%= photo.caption %></p>
+			<div class = "placephotos col-xs-12 col-sm-6">
+				<%= image_tag photo.picture, class: "popPic"  %>
+				<small><%= photo.caption %></small>
 					
 			</div>
 		<% end %>
 	</div>
 </div>
 
+
+<script>
+	$(function() {
+		$('.popPic').on('click', function() {
+			$('.imagepreview').attr('src', $(this).attr('src'));
+			$('#imagemodal').modal('show');   
+		});		
+});
+</script>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">              
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -133,7 +153,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -155,3 +175,7 @@
     </div>
   </div>
 </div>
+
+
+
+
