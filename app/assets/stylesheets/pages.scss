@@ -40,7 +40,7 @@ h2, li{
 	margin: 0;
 }
 
-.infocontainer, ol {
+.infocontainer {
 	text-align: center;
 }
 
@@ -50,8 +50,11 @@ h2, li{
 .infocontainer li {
 	font-size: 200%;
 }
+.infolist {
+	list-style-type: none;
+}
 
-@media all and (min-width: 700px) { 
+@media all and (min-width: 800px) { 
 	.homecontainer h1 {
 		font-size: 700%;
 	}
