@@ -3,7 +3,12 @@ Rails.application.routes.draw do
     post 'follow', to: 'socializations#follow'
     post 'unfollow', to: 'socializations#unfollow'
   end
-  root 'places#index'
+
+  authenticated :user do
+    root 'places#index', as: :authenticated_root
+  end
+
+  root "pages#index"
   get 'place/:id/likes', to: 'places#likes', as: :likes
   resources :places do
     resources :comments, only: :create

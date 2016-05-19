@@ -1,0 +1,68 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+body {
+	width: 100%;
+	height: 100%;
+}
+h1 {
+	font-family: "Lobster", cursive;
+}
+h2, li{
+	font-family: "Asap", sans-serif;
+}
+.homecontainer {
+	background-image: image-url('cliff.jpeg');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center center;
+	margin: 0;
+	color: white;
+	text-align: center;
+	padding: 0;
+	width: 100%;
+	height: 700px;
+}
+.hometext {
+	padding-top: 60%;
+
+}
+.homecontainer h1 {
+	font-size: 400%;
+	margin: 0;
+}
+.homecontainer h2 {
+	font-size: 200%;
+	font-weight: lighter;
+	margin: 0;
+}
+
+.infocontainer, ol {
+	text-align: center;
+}
+
+.infocontainer h1 {
+	font-size: 300%;
+}
+.infocontainer li {
+	font-size: 200%;
+}
+
+@media all and (min-width: 700px) { 
+	.homecontainer h1 {
+		font-size: 700%;
+	}
+	.homecontainer h2 {
+		font-size: 400%;
+	}
+	.homecontainer {
+		background-image: image-url('landscape.jpg');
+		height: 100%;
+	}
+	.hometext {
+		padding: 20%;
+	}
+ }
