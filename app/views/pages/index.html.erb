@@ -13,16 +13,23 @@
 		<div class = "hometext">
 			<h2>Welcome to</h2>
 			<h1>TravelThots</h1>
+			<div class = "buttons">
+			<%= link_to 'Log In', new_user_session_path, class: 'btn' %>
+			<%= link_to 'Sign Up', new_user_registration_path, class: 'btn' %>
 		</div>
+		</div>
+
 	</div>
 	<div class = "infocontainer">
 		<h1>How it works:</h1>
-		<ol class = "infolist">
-			<li>Sign up</li>
-			<li>Add a TravelThot</li>
-			<li>Start following friends</li>
-			<li>Share TravelThots</li>
-		</ol>
+		<div class = "col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+			<ol class = "infolist">
+				<li>Sign up</li>
+				<li>Add a TravelThot</li>
+				<li>Start following friends</li>
+				<li>Share TravelThots</li>
+			</ol>
+		</div>
 	</div>
 </body>
 </html>

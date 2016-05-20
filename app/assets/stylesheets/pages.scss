@@ -59,20 +59,31 @@ h2, li{
 	margin-left: 0;
 	padding-right: 0;
 	list-style-type: none;
+	text-align: left;
 }
 .infolist li {
 	counter-increment: step-counter;
 }
 .infolist li::before {
 	content: counter(step-counter);
-    margin-right: 10px;
-    font-size: 80%;
+    font-size: 150%;
     background-color: $yellowgreen;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     border-radius: 50%;
     color: white;
-    font-weight: bold;
-    padding: 3px 8px;
-    
+    margin-right: 10px;
+    padding: 10px;
+}
+.btn {
+	border: 1px white solid;
+	color: white;
+	text-decoration: none;
+	margin-top: 5%;
+}
+.btn:hover {
+	color: white;
+	text-transform: uppercase;
 }
 
 @media all and (min-width: 800px) { 
