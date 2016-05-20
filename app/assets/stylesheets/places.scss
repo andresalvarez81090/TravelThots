@@ -1,7 +1,8 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+$blue:#009688;
+$yellowgreen:#ffc107;
 .formbox {
 	background: #7278DD;
 	color: white;
@@ -13,7 +14,7 @@
 }
 
 .formbox input.btn.btn-primary {
-	background: purple;
+	background: $yellowgreen;
 }
 
 a h1 h2 {
@@ -21,7 +22,7 @@ a h1 h2 {
 	color: white;
 }
 .placebox {
-	background: #7278DD;
+	background: $blue;
 	color: white;
 	text-align: center;
 	text-decoration: none;

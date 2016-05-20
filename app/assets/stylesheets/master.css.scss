@@ -1,3 +1,5 @@
+$blue:#009688;
+$yellowgreen:#ffc107;
 .places {
 	color: white;
 	border: 1px solid white;
@@ -56,12 +58,18 @@ ul.pagination li.active a {
 	color: white;
 	border: #7278DD;
 }
+div.formbox {
+	background: $blue;
+}
 .formbox a{
-	background: #7278DD;
+	background: $blue;
 	color: white;
 	text-decoration: none;
 }
-
+.formbox a:hover {
+	text-decoration: none;
+	color: white;
+}
 .formbox a h1{
 	text-align: center;
 	font-family: 'Lobster', cursive;
@@ -69,7 +77,7 @@ ul.pagination li.active a {
 }
 
 .formbox input.btn.btn-primary {
-	background: purple;
+	background: $yellowgreen;
 }
 
 .field_with_errors {
@@ -90,6 +98,7 @@ ul.pagination li.active a {
 .comments {
 	margin-top: 5%;
 	text-align: center;
+	color: white;
 }
 .commentsline {
 	text-align: left;
