@@ -3,9 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+$blue:#009688;
+$yellowgreen:#ffc107;
 body {
 	width: 100%;
 	height: 100%;
+	background: $blue;
 }
 h1 {
 	font-family: "Lobster", cursive;
@@ -42,6 +46,7 @@ h2, li{
 
 .infocontainer {
 	text-align: center;
+	color: white;
 }
 
 .infocontainer h1 {
@@ -51,7 +56,23 @@ h2, li{
 	font-size: 200%;
 }
 .infolist {
+	margin-left: 0;
+	padding-right: 0;
 	list-style-type: none;
+}
+.infolist li {
+	counter-increment: step-counter;
+}
+.infolist li::before {
+	content: counter(step-counter);
+    margin-right: 10px;
+    font-size: 80%;
+    background-color: $yellowgreen;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    padding: 3px 8px;
+    
 }
 
 @media all and (min-width: 800px) { 
@@ -68,4 +89,10 @@ h2, li{
 	.hometext {
 		padding: 20%;
 	}
+	.infocontainer h1 {
+	font-size: 400%;
+}
+.infocontainer li {
+	font-size: 300%;
+}
  }
