@@ -1,28 +1,18 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TravelThots is a social media for travels Rails app. Here you can add the places you've traveled to and share with your friends. 
 
-Things you may want to cover:
+This is an in-progress project built with:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  Ruby on Rails
+  HTML/CSS
+  Bootstrap
+  Google Maps API
+  JavaScript
+  
+  Gems:
+    Devise
+    Geocoder
+    Carrier_wave
+    will_paginate
+    socialization
